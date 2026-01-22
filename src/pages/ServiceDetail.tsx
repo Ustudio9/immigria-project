@@ -17,8 +17,19 @@ import {
   Languages
 } from 'lucide-react';
 
+// Import service images
+import serviceExpressEntry from '@/assets/service-express-entry.jpg';
+import serviceWorkPermits from '@/assets/service-work-permits.jpg';
+import serviceStudyPermits from '@/assets/service-study-permits.jpg';
+import servicePnp from '@/assets/service-pnp.jpg';
+import serviceFamilySponsorship from '@/assets/service-family-sponsorship.jpg';
+import serviceBusiness from '@/assets/service-business.jpg';
+import serviceRecruitWorkers from '@/assets/service-recruit-workers.jpg';
+import serviceTranslation from '@/assets/service-translation.jpg';
+
 const serviceData: Record<string, {
   icon: any;
+  image: string;
   title: string;
   subtitle: string;
   description: string;
@@ -30,6 +41,7 @@ const serviceData: Record<string, {
 }> = {
   'express-entry': {
     icon: Home,
+    image: serviceExpressEntry,
     title: 'Express Entry',
     subtitle: 'Your Fastest Path to Canadian Permanent Residency',
     description: 'Express Entry is Canada\'s flagship immigration system for skilled workers. We help you navigate this points-based system to maximize your chances of receiving an Invitation to Apply (ITA).',
@@ -66,6 +78,7 @@ const serviceData: Record<string, {
   },
   'work-permits': {
     icon: Briefcase,
+    image: serviceWorkPermits,
     title: 'Work Permits',
     subtitle: 'Work Legally in Canada with Expert Guidance',
     description: 'Whether you need an employer-specific or open work permit, we guide you through LMIA applications, work permit processing, and employer compliance requirements.',
@@ -101,6 +114,7 @@ const serviceData: Record<string, {
   },
   'study-permits': {
     icon: GraduationCap,
+    image: serviceStudyPermits,
     title: 'Study Permits',
     subtitle: 'Start Your Canadian Education Journey',
     description: 'From university to college programs, we help international students navigate study permit applications, DLI requirements, and post-graduation pathways.',
@@ -136,6 +150,7 @@ const serviceData: Record<string, {
   },
   'pnp': {
     icon: Award,
+    image: servicePnp,
     title: 'Provincial Nominee Programs',
     subtitle: 'Provincial Pathways to Permanent Residency',
     description: 'With 80+ PNP streams across all provinces, we match your profile to the best provincial pathway and guide you through the nomination process.',
@@ -171,6 +186,7 @@ const serviceData: Record<string, {
   },
   'family-sponsorship': {
     icon: Users,
+    image: serviceFamilySponsorship,
     title: 'Family Sponsorship',
     subtitle: 'Reunite with Your Loved Ones in Canada',
     description: 'Bring your spouse, parents, children, and other eligible family members to Canada through our comprehensive family sponsorship services.',
@@ -206,6 +222,7 @@ const serviceData: Record<string, {
   },
   'business-immigration': {
     icon: Building2,
+    image: serviceBusiness,
     title: 'Business Immigration',
     subtitle: 'Invest and Grow Your Business in Canada',
     description: 'For entrepreneurs and investors looking to establish or expand business operations in Canada through various business immigration programs.',
@@ -241,6 +258,7 @@ const serviceData: Record<string, {
   },
   'recruit-foreign-workers': {
     icon: UserPlus,
+    image: serviceRecruitWorkers,
     title: 'Recruit Foreign Workers',
     subtitle: 'Build Your Global Team with Confidence',
     description: 'Comprehensive solutions for Canadian employers looking to hire international talent, from LMIA applications to onboarding support.',
@@ -276,6 +294,7 @@ const serviceData: Record<string, {
   },
   'translation': {
     icon: Languages,
+    image: serviceTranslation,
     title: 'Translation Services',
     subtitle: 'Certified Document Translation for Immigration',
     description: 'Professional, certified translation services for all your immigration documents, accepted by IRCC and all Canadian immigration authorities.',
@@ -309,6 +328,7 @@ const serviceData: Record<string, {
   },
   'citizenship': {
     icon: Award,
+    image: serviceExpressEntry, // Reuse Express Entry image for citizenship
     title: 'Citizenship Assistance',
     subtitle: 'Complete Your Journey to Canadian Citizenship',
     description: 'From citizenship test preparation to application submission, we help permanent residents become proud Canadian citizens.',
@@ -370,17 +390,25 @@ export default function ServiceDetail() {
       <Navbar />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="hero-gradient hero-pattern py-20 md:py-28">
-          <div className="container">
+        <section className="relative py-20 md:py-28 overflow-hidden">
+          {/* Background Image */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${service.image})` }}
+          >
+            <div className="absolute inset-0 bg-primary/85" />
+          </div>
+          
+          <div className="container relative z-10">
             <div className="max-w-3xl">
               <div className="w-16 h-16 bg-accent/20 rounded-xl flex items-center justify-center mb-6">
                 <service.icon className="h-8 w-8 text-accent" />
               </div>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-4">
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
                 {service.title}
               </h1>
               <p className="text-accent text-xl font-medium mb-4">{service.subtitle}</p>
-              <p className="text-primary-foreground/80 text-lg leading-relaxed">
+              <p className="text-white/90 text-lg leading-relaxed">
                 {service.description}
               </p>
             </div>

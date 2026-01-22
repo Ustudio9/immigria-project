@@ -1,72 +1,75 @@
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { PageHero } from '@/components/shared/PageHero';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { 
-  Briefcase, 
-  GraduationCap, 
-  Home, 
-  Users, 
-  Award, 
-  Building2, 
-  UserPlus, 
-  Languages,
   ArrowRight,
   CheckCircle
 } from 'lucide-react';
 
+import heroServicesImg from '@/assets/hero-services.jpg';
+import serviceExpressEntry from '@/assets/service-express-entry.jpg';
+import serviceWorkPermits from '@/assets/service-work-permits.jpg';
+import serviceStudyPermits from '@/assets/service-study-permits.jpg';
+import servicePnp from '@/assets/service-pnp.jpg';
+import serviceFamilySponsorship from '@/assets/service-family-sponsorship.jpg';
+import serviceBusiness from '@/assets/service-business.jpg';
+import serviceRecruitWorkers from '@/assets/service-recruit-workers.jpg';
+import serviceTranslation from '@/assets/service-translation.jpg';
+
 const services = [
   {
-    icon: Home,
+    image: serviceExpressEntry,
     title: 'Express Entry',
     description: 'The fastest pathway to Canadian permanent residency for skilled workers. We help you maximize your CRS score and navigate the selection process.',
     features: ['CRS Score Optimization', 'Profile Creation & Management', 'Document Preparation', 'ITA Response'],
     href: '/services/express-entry',
   },
   {
-    icon: Briefcase,
+    image: serviceWorkPermits,
     title: 'Work Permits',
     description: 'Comprehensive work permit solutions including LMIA applications, open work permits, and employer compliance guidance.',
     features: ['LMIA Processing', 'Work Permit Applications', 'PGWP Support', 'Employer Compliance'],
     href: '/services/work-permits',
   },
   {
-    icon: GraduationCap,
+    image: serviceStudyPermits,
     title: 'Study Permits',
     description: 'From study permit applications to post-graduation pathways, we support your educational journey in Canada.',
     features: ['Study Permit Applications', 'DLI Verification', 'SDS Program', 'PGWP Transition'],
     href: '/services/study-permits',
   },
   {
-    icon: Award,
+    image: servicePnp,
     title: 'Provincial Nominee Programs',
     description: 'Access 80+ PNP streams across all provinces. We match your profile to the best provincial pathway.',
     features: ['Provincial Nominations', 'Expression of Interest', 'Enhanced CRS Points', 'Provincial Pathways'],
     href: '/services/pnp',
   },
   {
-    icon: Users,
+    image: serviceFamilySponsorship,
     title: 'Family Sponsorship',
     description: 'Reunite with your loved ones in Canada. Spouse, parent, child, and other family sponsorship programs.',
     features: ['Spouse Sponsorship', 'Parent & Grandparent', 'Dependent Children', 'Super Visa'],
     href: '/services/family-sponsorship',
   },
   {
-    icon: Building2,
+    image: serviceBusiness,
     title: 'Business Immigration',
     description: 'Investor visas, start-up programs, and entrepreneur pathways for business-minded individuals.',
     features: ['Start-up Visa', 'Investor Programs', 'Entrepreneur Streams', 'Corporate Relocation'],
     href: '/services/business-immigration',
   },
   {
-    icon: UserPlus,
+    image: serviceRecruitWorkers,
     title: 'Recruit Foreign Workers',
     description: 'End-to-end solutions for employers looking to hire international talent and build global teams.',
     features: ['LMIA Applications', 'Global Talent Stream', 'Compliance Support', 'Retention Strategies'],
     href: '/services/recruit-foreign-workers',
   },
   {
-    icon: Languages,
+    image: serviceTranslation,
     title: 'Translation Services',
     description: 'Certified document translation for all your immigration documents and official papers.',
     features: ['Certified Translations', 'ATIO Members', 'Fast Turnaround', 'All Languages'],
@@ -80,35 +83,37 @@ export default function Services() {
       <Navbar />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="hero-gradient hero-pattern py-20 md:py-28">
-          <div className="container">
-            <div className="max-w-3xl">
-              <span className="text-accent font-semibold text-sm uppercase tracking-wider">Our Services</span>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mt-3 mb-6">
-                Comprehensive Immigration Solutions
-              </h1>
-              <p className="text-primary-foreground/80 text-lg md:text-xl leading-relaxed">
-                From work permits to citizenship, we provide end-to-end immigration services tailored to your unique situation and goals.
-              </p>
-            </div>
-          </div>
-        </section>
+        <PageHero
+          label="Our Services"
+          title="Comprehensive Immigration Solutions"
+          description="From work permits to citizenship, we provide end-to-end immigration services tailored to your unique situation and goals."
+          backgroundImage={heroServicesImg}
+        />
 
         {/* Services Grid */}
         <section className="py-20 bg-background">
           <div className="container">
-            <div className="space-y-8">
+            <div className="space-y-16">
               {services.map((service, index) => (
                 <div
                   key={service.title}
-                  className={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-center ${
+                  className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
                     index % 2 === 1 ? 'lg:flex-row-reverse' : ''
                   }`}
                 >
+                  {/* Image */}
                   <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                    <div className="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
-                      <service.icon className="h-7 w-7 text-accent" />
+                    <div className="rounded-2xl overflow-hidden shadow-lg">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-64 md:h-80 object-cover transition-transform duration-500 hover:scale-105"
+                      />
                     </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
                     <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-4">
                       {service.title}
                     </h2>
@@ -129,11 +134,6 @@ export default function Services() {
                         <ArrowRight className="h-4 w-4 ml-2" />
                       </Link>
                     </Button>
-                  </div>
-                  <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                    <div className="bg-muted rounded-2xl p-8 md:p-12 aspect-video flex items-center justify-center">
-                      <service.icon className="h-24 w-24 text-muted-foreground/30" />
-                    </div>
                   </div>
                 </div>
               ))}

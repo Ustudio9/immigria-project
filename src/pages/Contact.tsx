@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { PageHero } from '@/components/shared/PageHero';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -7,6 +8,8 @@ import { Label } from '@/components/ui/label';
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from 'sonner';
+
+import heroContactImg from '@/assets/hero-contact.jpg';
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -28,19 +31,12 @@ export default function Contact() {
       <Navbar />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="hero-gradient hero-pattern py-20 md:py-28">
-          <div className="container">
-            <div className="max-w-3xl">
-              <span className="text-accent font-semibold text-sm uppercase tracking-wider">Contact Us</span>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mt-3 mb-6">
-                Let's Start Your Immigration Journey
-              </h1>
-              <p className="text-primary-foreground/80 text-lg md:text-xl leading-relaxed">
-                Have questions about your immigration options? Our team is ready to help. Reach out to us through any of the channels below.
-              </p>
-            </div>
-          </div>
-        </section>
+        <PageHero
+          label="Contact Us"
+          title="Let's Start Your Immigration Journey"
+          description="Have questions about your immigration options? Our team is ready to help. Reach out to us through any of the channels below."
+          backgroundImage={heroContactImg}
+        />
 
         {/* Contact Section */}
         <section className="py-20 bg-background">
