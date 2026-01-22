@@ -1,8 +1,11 @@
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { PageHero } from '@/components/shared/PageHero';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Target, Eye, Heart, Users, Award, BookOpen } from 'lucide-react';
+
+import heroAboutImg from '@/assets/hero-about.jpg';
 
 const team = [
   {
@@ -60,19 +63,12 @@ export default function About() {
       <Navbar />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="hero-gradient hero-pattern py-20 md:py-28">
-          <div className="container">
-            <div className="max-w-3xl">
-              <span className="text-accent font-semibold text-sm uppercase tracking-wider">About Immigria</span>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mt-3 mb-6">
-                Your Trusted Partner in Immigration Excellence
-              </h1>
-              <p className="text-primary-foreground/80 text-lg md:text-xl leading-relaxed">
-                Since 2008, Immigria has been guiding individuals, families, and businesses through the complex landscape of Canadian and US immigration with expertise, integrity, and personalized care.
-              </p>
-            </div>
-          </div>
-        </section>
+        <PageHero
+          label="About Immigria"
+          title="Your Trusted Partner in Immigration Excellence"
+          description="Since 2008, Immigria has been guiding individuals, families, and businesses through the complex landscape of Canadian and US immigration with expertise, integrity, and personalized care."
+          backgroundImage={heroAboutImg}
+        />
 
         {/* Mission & Vision */}
         <section className="py-20 bg-background">
@@ -143,20 +139,20 @@ export default function About() {
             <div className="bg-primary rounded-2xl p-8 md:p-12">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary-foreground mb-6">
+                  <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-6">
                     Licensed, Certified, and Trusted
                   </h2>
-                  <p className="text-primary-foreground/80 text-lg leading-relaxed mb-6">
+                  <p className="text-white/80 text-lg leading-relaxed mb-6">
                     All our consultants are members of the College of Immigration and Citizenship Consultants (CICC) and adhere to the highest ethical standards in the industry.
                   </p>
                   <div className="flex flex-wrap gap-4">
-                    <div className="flex items-center gap-2 bg-primary-foreground/10 rounded-full px-4 py-2">
+                    <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
                       <Award className="h-5 w-5 text-accent" />
-                      <span className="text-primary-foreground text-sm font-medium">ICCRC Licensed</span>
+                      <span className="text-white text-sm font-medium">ICCRC Licensed</span>
                     </div>
-                    <div className="flex items-center gap-2 bg-primary-foreground/10 rounded-full px-4 py-2">
+                    <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2">
                       <BookOpen className="h-5 w-5 text-accent" />
-                      <span className="text-primary-foreground text-sm font-medium">CICC Members</span>
+                      <span className="text-white text-sm font-medium">CICC Members</span>
                     </div>
                   </div>
                 </div>

@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { PageHero } from '@/components/shared/PageHero';
 import { Button } from '@/components/ui/button';
+
+import heroAssessmentImg from '@/assets/hero-assessment.jpg';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -216,19 +219,12 @@ export default function Assessment() {
       <Navbar />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="hero-gradient hero-pattern py-16 md:py-20">
-          <div className="container">
-            <div className="max-w-3xl">
-              <span className="text-accent font-semibold text-sm uppercase tracking-wider">Free Assessment</span>
-              <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mt-3 mb-4">
-                Discover Your Immigration Options
-              </h1>
-              <p className="text-primary-foreground/80 text-lg">
-                Answer a few questions to receive personalized recommendations for your immigration journey.
-              </p>
-            </div>
-          </div>
-        </section>
+        <PageHero
+          label="Free Assessment"
+          title="Discover Your Immigration Options"
+          description="Answer a few questions to receive personalized recommendations for your immigration journey."
+          backgroundImage={heroAssessmentImg}
+        />
 
         {/* Assessment Form */}
         <section className="py-12 bg-background">

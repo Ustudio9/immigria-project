@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { PageHero } from '@/components/shared/PageHero';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -11,9 +12,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Calendar, Clock, CheckCircle, ArrowRight } from 'lucide-react';
+import { Calendar, Clock, CheckCircle } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from 'sonner';
+
+import heroBookingImg from '@/assets/hero-booking.jpg';
 
 const services = [
   'Express Entry',
@@ -59,19 +62,12 @@ export default function Booking() {
       <Navbar />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="hero-gradient hero-pattern py-20 md:py-28">
-          <div className="container">
-            <div className="max-w-3xl">
-              <span className="text-accent font-semibold text-sm uppercase tracking-wider">Book a Consultation</span>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mt-3 mb-6">
-                Schedule Your Expert Immigration Consultation
-              </h1>
-              <p className="text-primary-foreground/80 text-lg md:text-xl leading-relaxed">
-                Book a one-on-one session with our immigration specialists to discuss your unique case and explore your options.
-              </p>
-            </div>
-          </div>
-        </section>
+        <PageHero
+          label="Book a Consultation"
+          title="Schedule Your Expert Immigration Consultation"
+          description="Book a one-on-one session with our immigration specialists to discuss your unique case and explore your options."
+          backgroundImage={heroBookingImg}
+        />
 
         {/* Booking Section */}
         <section className="py-20 bg-background">
